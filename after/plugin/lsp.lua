@@ -3,18 +3,18 @@ local binds = require("djor.binds")
 
 lsp.preset("recommended")
 
-lsp.ensure_installed({'tsserver', 'lua-language-server'})
+lsp.ensure_installed({'tsserver'})
 
--- Fix Undefined global 'vim'
-lsp.configure('lua-language-server', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = {'vim'}
-            }
-        }
-    }
-})
+-- -- Fix Undefined global 'vim'
+-- lsp.configure('lua-language-server', {
+--     settings = {
+--         Lua = {
+--             diagnostics = {
+--                 globals = {'vim'}
+--             }
+--         }
+--     }
+-- })
 
 require'lspconfig'.lua_ls.setup {
     on_init = function(client)
