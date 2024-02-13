@@ -1,4 +1,6 @@
-require("djor.remap")
--- require("djor.packer")
+-- require("djor.remap")
 require("djor.set")
 require("djor.lazy")
+require("djor.binds")
+-- local binds = require("djor.binds")
+-- print(vim.inspect(binds))

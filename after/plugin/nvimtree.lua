@@ -1,3 +1,5 @@
+local binds = require("djor.binds")
+
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
   view = {
@@ -13,5 +15,4 @@ require("nvim-tree").setup({
 })
 
 local api = require "nvim-tree.api"
-
-vim.keymap.set("n", "<C-b>", vim.cmd.NvimTreeToggle) 
+vim.keymap.set("n", binds.nvimtree.toggle, api.tree.toggle) 
