@@ -15,7 +15,7 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 
 vim.opt.updatetime = 50 
-vim.opt.clipboard = "unnamedplus" -- Yank to clipboard
+-- vim.opt.clipboard = "unnamedplus" -- Yank to clipboard
 vim.wo.fillchars='eob: ' -- remove tilde from empty lines
 
 vim.o.cmdheight = 0

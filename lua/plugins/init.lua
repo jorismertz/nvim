@@ -115,4 +115,23 @@ return {
             "nvim-lua/plenary.nvim",
         },
     },
+
+    -- Harpoon
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" }
+    },
+
+    -- Undotree
+    {
+        "jiaoshijie/undotree",
+        dependencies = "nvim-lua/plenary.nvim",
+        config = true,
+    },
+
+    -- Copilot
+    {
+        "github/copilot.vim",
+    }
 }
