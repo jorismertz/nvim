@@ -50,6 +50,9 @@ return {
         'nvim-treesitter/nvim-treesitter',
         build = ":TSUpdate",
     },
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+    },
 
     -- Nvim-Tree
     {
@@ -60,6 +63,17 @@ return {
         cmd = "NvimTreeToggle",
     },
 
+    -- Surround
+    {
+        "kylechui/nvim-surround",
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
+    },
     -- LSP-Zero
     {
         'VonHeikemen/lsp-zero.nvim',
@@ -82,73 +96,85 @@ return {
 
     -- Bufferline.nvim
     -- {
-    --     'akinsho/bufferline.nvim',
-    --     tag = "*",
-    --     dependencies = 'nvim-tree/nvim-web-devicons',
-    -- },
+        --     'akinsho/bufferline.nvim',
+        --     tag = "*",
+        --     dependencies = 'nvim-tree/nvim-web-devicons',
+        -- },
 
-    -- Incline.nvim
-    {
-        'b0o/incline.nvim',
-    },
-
-    -- Lualine.nvim
-    {
-        'nvim-lualine/lualine.nvim',
-        dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
-    },
-
-    -- TailwindCSS Colorizer
-    {
-        "roobert/tailwindcss-colorizer-cmp.nvim",
-        config = function()
-            require("tailwindcss-colorizer-cmp").setup({
-                color_square_width = 2,
-            })
-        end,
-    },
-
-    -- Lazygit.nvim
-    {
-        "kdheepak/lazygit.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
+        -- Incline.nvim
+        {
+            'b0o/incline.nvim',
         },
-    },
 
-    -- Harpoon
-    {
-        "ThePrimeagen/harpoon",
-        branch = "harpoon2",
-        dependencies = { "nvim-lua/plenary.nvim" }
-    },
+        -- Lualine.nvim
+        {
+            'nvim-lualine/lualine.nvim',
+            dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
+        },
 
-    -- Undotree
-    {
-        "jiaoshijie/undotree",
-        dependencies = "nvim-lua/plenary.nvim",
-        config = true,
-    },
+        -- TailwindCSS Colorizer
+        {
+            "roobert/tailwindcss-colorizer-cmp.nvim",
+            config = function()
+                require("tailwindcss-colorizer-cmp").setup({
+                    color_square_width = 2,
+                })
+            end,
+        },
 
-    -- Copilot
-    {
-        "github/copilot.vim",
-    },
+        -- Lazygit.nvim
+        {
+            "kdheepak/lazygit.nvim",
+            dependencies = {
+                "nvim-lua/plenary.nvim",
+            },
+        },
 
-    -- Moveline
-    {
-        'willothy/moveline.nvim',
-        build = 'make',
-    },
+        -- Harpoon
+        {
+            "ThePrimeagen/harpoon",
+            branch = "harpoon2",
+            dependencies = { "nvim-lua/plenary.nvim" }
+        },
+        -- Undotree
+        {
+            "jiaoshijie/undotree",
+            dependencies = "nvim-lua/plenary.nvim",
+            config = true,
+        },
 
-    -- Rest.nvim
-    {
-        "rest-nvim/rest.nvim",
-        dependencies = { { "nvim-lua/plenary.nvim" } },
-        config = function()
-            require("rest-nvim").setup({
-                --- Get the same options from Packer setup
-            })
-        end
-    }
-}
+        -- Copilot
+        {
+            "github/copilot.vim",
+        },
+
+        -- Moveline
+        {
+            'willothy/moveline.nvim',
+            build = 'make',
+        },
+
+        -- Rest.nvim
+        {
+            "rest-nvim/rest.nvim",
+            dependencies = { { "nvim-lua/plenary.nvim" } },
+            config = function()
+                require("rest-nvim").setup({
+                    --- Get the same options from Packer setup
+                })
+            end
+        },
+        { "folke/neodev.nvim", opts = {} },
+        {
+            "folke/which-key.nvim",
+            event = "VeryLazy",
+            init = function()
+                vim.o.timeout = true
+                vim.o.timeoutlen = 300
+            end,
+            opts = {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        }}

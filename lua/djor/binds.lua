@@ -3,7 +3,7 @@ local harpoon = require('harpoon')
 local utils = require('djor.utils')
 local undotree = require('undotree')
 local moveline = require('moveline')
-local nvimtree = require 'nvim-tree.api'
+local nvimtree = require ( 'nvim-tree.api' )
 
 local keymap = vim.keymap.set
 local opts = {
@@ -29,10 +29,7 @@ keymap('n', "<C-l>", "<C-w>l", opts)
 keymap('n', "<C-b>", nvimtree.tree.toggle)
 keymap('n', "<leader>kk", "<cmd>CellularAutomaton make_it_rain<CR>", opts)
 keymap('n', "<leader>cb", utils.buf_kill, opts)
-keymap('n', '<leader>ut', undotree.toggle, {
-    noremap = true,
-    silent = true
-})
+keymap('n', '<leader>ut', undotree.toggle, opts)
 
 -- Harpoon
 keymap('n', "<leader>a", function()
