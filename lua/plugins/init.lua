@@ -11,6 +11,12 @@ return {
         event = "BufRead",
     },
 
+    -- None-ls (null-ls replacement)
+    {
+        'nvimtools/none-ls.nvim',
+        event = "BufRead",
+    },
+
     {
         'eandrju/cellular-automaton.nvim',
         event = "BufRead",
@@ -45,12 +51,6 @@ return {
         build = ":TSUpdate",
     },
 
-    -- Catppuccino
-    {
-        'catppuccin/nvim',
-        as = 'catppuccin',
-    },
-
     -- Nvim-Tree
     {
         'nvim-tree/nvim-tree.lua',
@@ -81,11 +81,11 @@ return {
     },
 
     -- Bufferline.nvim
-    {
-        'akinsho/bufferline.nvim',
-        tag = "*",
-        dependencies = 'nvim-tree/nvim-web-devicons',
-    },
+    -- {
+    --     'akinsho/bufferline.nvim',
+    --     tag = "*",
+    --     dependencies = 'nvim-tree/nvim-web-devicons',
+    -- },
 
     -- Incline.nvim
     {
@@ -139,5 +139,16 @@ return {
     {
         'willothy/moveline.nvim',
         build = 'make',
+    },
+
+    -- Rest.nvim
+    {
+        "rest-nvim/rest.nvim",
+        dependencies = { { "nvim-lua/plenary.nvim" } },
+        config = function()
+            require("rest-nvim").setup({
+                --- Get the same options from Packer setup
+            })
+        end
     }
 }

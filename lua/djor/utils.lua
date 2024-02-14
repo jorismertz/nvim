@@ -1,5 +1,4 @@
 local utils = {}
-
 -- https://github.com/LunarVim/LunarVim/blob/45f9825d1e666890ed37baf15a14707ae40e5cff/lua/lvim/core/bufferline.lua#L147-L219
 -- Common kill function for bdelete and bwipeout
 -- credits: based on bbye and nvim-bufdel
@@ -9,9 +8,9 @@ local utils = {}
 function utils.buf_kill(kill_command, bufnr, force)
   kill_command = kill_command or "bd"
 
-
-  local bo = vim.bo
   local api = vim.api
+  local bo = vim.bo
+
   local fmt = string.format
   local fnamemodify = vim.fn.fnamemodify
 
