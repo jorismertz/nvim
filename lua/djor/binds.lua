@@ -4,8 +4,16 @@ local opts = { noremap = true, silent = true }
 local harpoon = require("harpoon")
 local utils = require("djor.utils")
 local undotree = require("undotree")
+local moveline = require('moveline')
 
 vim.g.mapleader = " "
+
+-- Selection movement
+keymap('n', '<M-k>', moveline.up)
+keymap('n', '<M-j>', moveline.down)
+keymap('v', '<M-k>', moveline.block_up)
+keymap('v', '<M-j>', moveline.block_down)
+
 
 -- Pane navigation movements
 keymap("n", "<C-j>", "<C-w>h", opts)

@@ -133,5 +133,11 @@ return {
     -- Copilot
     {
         "github/copilot.vim",
+    },
+
+    -- Moveline
+    {
+        'willothy/moveline.nvim',
+        build = 'make',
     }
 }
