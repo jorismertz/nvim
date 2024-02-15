@@ -69,11 +69,10 @@ return {
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = "VeryLazy",
         config = function()
-            require("nvim-surround").setup({
-                -- Configuration here, or leave empty to use defaults
-            })
+            require("nvim-surround").setup({})
         end
     },
+
     -- LSP-Zero
     {
         'VonHeikemen/lsp-zero.nvim',
@@ -94,87 +93,81 @@ return {
         cmd = "CommentToggle",
     },
 
-    -- Bufferline.nvim
-    -- {
-        --     'akinsho/bufferline.nvim',
-        --     tag = "*",
-        --     dependencies = 'nvim-tree/nvim-web-devicons',
-        -- },
+    -- Incline.nvim
+    {
+        'b0o/incline.nvim',
+    },
 
-        -- Incline.nvim
-        {
-            'b0o/incline.nvim',
-        },
+    -- Lualine.nvim
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
+    },
 
-        -- Lualine.nvim
-        {
-            'nvim-lualine/lualine.nvim',
-            dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
-        },
+    -- TailwindCSS Colorizer
+    {
+        "roobert/tailwindcss-colorizer-cmp.nvim",
+        config = function()
+            require("tailwindcss-colorizer-cmp").setup({
+                color_square_width = 2,
+            })
+        end,
+    },
 
-        -- TailwindCSS Colorizer
-        {
-            "roobert/tailwindcss-colorizer-cmp.nvim",
-            config = function()
-                require("tailwindcss-colorizer-cmp").setup({
-                    color_square_width = 2,
-                })
-            end,
+    -- Lazygit.nvim
+    {
+        "kdheepak/lazygit.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
         },
+    },
 
-        -- Lazygit.nvim
-        {
-            "kdheepak/lazygit.nvim",
-            dependencies = {
-                "nvim-lua/plenary.nvim",
-            },
-        },
+    -- Harpoon
+    {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" }
+    },
+    -- Undotree
+    {
+        "jiaoshijie/undotree",
+        dependencies = "nvim-lua/plenary.nvim",
+        config = true,
+    },
 
-        -- Harpoon
-        {
-            "ThePrimeagen/harpoon",
-            branch = "harpoon2",
-            dependencies = { "nvim-lua/plenary.nvim" }
-        },
-        -- Undotree
-        {
-            "jiaoshijie/undotree",
-            dependencies = "nvim-lua/plenary.nvim",
-            config = true,
-        },
+    -- Copilot
+    {
+        "github/copilot.vim",
+    },
 
-        -- Copilot
-        {
-            "github/copilot.vim",
-        },
+    -- Moveline
+    {
+        'willothy/moveline.nvim',
+        build = 'make',
+    },
 
-        -- Moveline
-        {
-            'willothy/moveline.nvim',
-            build = 'make',
-        },
+    -- Rest.nvim
+    {
+        "rest-nvim/rest.nvim",
+        dependencies = { { "nvim-lua/plenary.nvim" } },
+        config = function()
+            require("rest-nvim").setup({
+                --- Get the same options from Packer setup
+            })
+        end
+    },
 
-        -- Rest.nvim
-        {
-            "rest-nvim/rest.nvim",
-            dependencies = { { "nvim-lua/plenary.nvim" } },
-            config = function()
-                require("rest-nvim").setup({
-                    --- Get the same options from Packer setup
-                })
-            end
-        },
-        { "folke/neodev.nvim", opts = {} },
-        {
-            "folke/which-key.nvim",
-            event = "VeryLazy",
-            init = function()
-                vim.o.timeout = true
-                vim.o.timeoutlen = 300
-            end,
-            opts = {
-                -- your configuration comes here
-                -- or leave it empty to use the default settings
-                -- refer to the configuration section below
-            }
-        }}
+    -- Neodev
+    { "folke/neodev.nvim", opts = {} },
+
+    -- Which-Key
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        opts = {}
+    }
+}
