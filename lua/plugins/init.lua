@@ -88,10 +88,18 @@ return {
     },
 
     -- Nvim-Comment
-    {
-        'terrortylor/nvim-comment',
-        cmd = "CommentToggle",
+    -- {
+    --     'terrortylor/nvim-comment',
+    --     cmd = "CommentToggle",
+    -- },
+{
+    'numToStr/Comment.nvim',
+    opts = {
+        -- add any options here
     },
+    lazy = false,
+},
+
 
     -- Incline.nvim
     {
