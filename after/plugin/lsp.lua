@@ -1,4 +1,6 @@
 require('neodev').setup({})
+local react_snippets = require('djor.snippets.react')
+local go_snippets = require('djor.snippets.go')
 
 local lsp = require('lsp-zero')
 local binds = require('djor.binds')
@@ -46,6 +48,14 @@ lsp.on_attach(function(_, bufnr)
     vim.keymap.set('n', binds.lsp.references, vim.lsp.buf.references, opts)
     vim.keymap.set('n', binds.lsp.rename, vim.lsp.buf.rename, opts)
     vim.keymap.set('i', binds.lsp.signature_help, vim.lsp.buf.signature_help, opts)
+
+    if vim.bo.filetype == 'typescriptreact' then
+        react_snippets.set_keymaps(opts)
+    end
+
+    if vim.bo.filetype == 'go' then
+        go_snippets.set_keymaps(opts)
+    end
 end)
 
 lsp.setup()
