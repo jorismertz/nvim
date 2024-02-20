@@ -179,5 +179,8 @@ return {
     {
       'windwp/nvim-ts-autotag',
       event = "InsertEnter",
-    }
+    },
+
+    -- Nvim notify
+    { 'rcarriga/nvim-notify' }
   }

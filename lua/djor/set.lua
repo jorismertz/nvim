@@ -19,3 +19,5 @@ vim.opt.updatetime = 50
 vim.wo.fillchars='eob: ' -- remove tilde from empty lines
 
 vim.o.cmdheight = 0
+
+-- vim.notify = require("notify")

@@ -51,12 +51,13 @@ lsp.on_attach(function(_, bufnr)
     vim.keymap.set('i', binds.lsp.signature_help, vim.lsp.buf.signature_help, opts)
 
     if vim.bo.filetype == 'typescriptreact' then
+
       vim.keymap.set('n', '<leader>ue', function()
-        snippets.insert(react_snippets.use_effect())
+        react_snippets.use_effect(bufnr)
       end, opts)
 
       vim.keymap.set('n', '<leader>us', function()
-        snippets.insert(react_snippets.use_state())
+      react_snippets.use_state(bufnr)
       end, opts)
     end
 
