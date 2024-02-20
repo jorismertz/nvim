@@ -1,4 +1,5 @@
 require('neodev').setup({})
+local snippets = require('djor.snippets')
 local react_snippets = require('djor.snippets.react')
 local go_snippets = require('djor.snippets.go')
 
@@ -7,8 +8,8 @@ local binds = require('djor.binds')
 
 lsp.preset('recommended')
 lsp.ensure_installed({
-    'tsserver',
- })
+  'tsserver',
+})
 
 local lspconfig = require('lspconfig')
 lspconfig.lua_ls.setup({
@@ -30,8 +31,8 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     [binds.cmp.complete] = cmp.mapping.complete(),
 })
 
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
+-- cmp_mappings['<Tab>'] = nil
+-- cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({ mapping = cmp_mappings })
 
@@ -50,11 +51,19 @@ lsp.on_attach(function(_, bufnr)
     vim.keymap.set('i', binds.lsp.signature_help, vim.lsp.buf.signature_help, opts)
 
     if vim.bo.filetype == 'typescriptreact' then
-        react_snippets.set_keymaps(opts)
+      vim.keymap.set('n', '<leader>ue', function()
+        snippets.insert(react_snippets.use_effect())
+      end, opts)
+
+      vim.keymap.set('n', '<leader>us', function()
+        snippets.insert(react_snippets.use_state())
+      end, opts)
     end
 
     if vim.bo.filetype == 'go' then
-        go_snippets.set_keymaps(opts)
+      vim.keymap.set('n', '<leader>ee', function()
+        snippets.insert(go_snippets.err_not_nil())
+      end, opts)
     end
 end)
 

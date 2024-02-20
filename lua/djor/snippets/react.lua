@@ -1,4 +1,3 @@
-local snippets = require('djor.snippets')
 local M = {}
 
 M.use_effect = function()
@@ -28,16 +27,6 @@ M.use_ref = function()
   )
 
   return {line}
-end
-
-M.set_keymaps = function(opts)
-  vim.keymap.set('n', '<leader>ue', function()
-    snippets.insert(M.use_effect())
-  end, opts)
-
-  vim.keymap.set('n', '<leader>us', function()
-    snippets.insert(M.use_state())
-  end, opts)
 end
 
 return M
