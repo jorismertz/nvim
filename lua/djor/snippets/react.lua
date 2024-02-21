@@ -6,6 +6,24 @@ local function get_root(bufnr)
   local tree = parser:parse()[1]
   return tree:root()
 end
+--
+-- local thingy = [[
+-- [(import_statement source: (_) @source (#eq? @source "\"react\""))
+-- (import_statement
+--   (import_clause
+--     (named_imports
+--       (import_specifier
+--         name: (identifier) @name (#eq? @name "useEffect")
+--         )
+--       )
+--     ))
+-- ] @react-import 
+-- ]]
+--
+-- local react_import_query = vim.treesitter.query.parse(
+--   "typescript",
+--   '(import_statement source: (_) @import (#eq? @import "\"react\""))'
+-- )
 
 local function find_import(bufnr, name)
   local root = get_root(bufnr)

@@ -1,22 +1,4 @@
 return {
-  -- Lazy.nvim setup
-  {
-    'rktjmp/lush.nvim', -- Required for rose-pine theme
-    event = "VimEnter",
-  },
-
-  -- Prettier.nvim
-  {
-    'MunifTanjim/prettier.nvim',
-    event = "BufRead",
-  },
-
-  -- None-ls (null-ls replacement)
-  {
-    'nvimtools/none-ls.nvim',
-    event = "BufRead",
-  },
-
   {
     'eandrju/cellular-automaton.nvim',
     event = "BufRead",
@@ -25,9 +7,9 @@ return {
   -- Telescope.nvim
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.2',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    branch = "master",
     cmd = "Telescope",
+    dependencies = { 'nvim-lua/plenary.nvim' },
   },
 
   -- Rose Pine Theme
@@ -35,6 +17,10 @@ return {
     'rose-pine/neovim',
     as = 'rose-pine',
     config = function()
+      -- These 2 lines allow for a transparant background
+      vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+
       vim.cmd("colorscheme rose-pine-moon")
     end,
   },
@@ -43,155 +29,94 @@ return {
   {
     'NvChad/nvim-colorizer.lua',
     event = "BufRead",
-  },
-
-  -- Nvim-Treesitter
-  {
-    'nvim-treesitter/nvim-treesitter',
-    build = ":TSUpdate",
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-  },
-
-  -- Nvim-Tree
-  {
-    'nvim-tree/nvim-tree.lua',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-    cmd = "NvimTreeToggle",
+    config = function()
+      require 'colorizer'.setup({})
+    end
   },
 
   -- Surround
   {
     "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    version = "*",
     event = "VeryLazy",
     config = function()
-      require("nvim-surround").setup({})
+      require("nvim-surround").setup()
     end
   },
 
-  -- LSP-Zero
   {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
-    dependencies = {
-      { 'neovim/nvim-lspconfig' },             -- Required
-      { 'williamboman/mason.nvim' },           -- Optional
-      { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-      { 'hrsh7th/nvim-cmp' },                  -- Required
-      { 'hrsh7th/cmp-nvim-lsp' },              -- Required
-      { 'L3MON4D3/LuaSnip' },                  -- Required
-    },
+    'numToStr/Comment.nvim',
+    event = "VeryLazy",
+    opts = {},
+    lazy = false,
+    config = function()
+      require('Comment').setup()
+    end,
   },
 
-    {
-      'numToStr/Comment.nvim',
-      opts = {},
-      lazy = false,
+  -- Copilot
+  {
+    "github/copilot.vim",
+    event = "BufRead"
+  },
+
+  -- Moveline
+  {
+    'willothy/moveline.nvim',
+    event = "VeryLazy",
+    build = 'make',
+    config = function()
+      local moveline = require('moveline')
+
+      vim.keymap.set('n', '<M-k>', moveline.up)
+      vim.keymap.set('n', '<M-j>', moveline.down)
+      vim.keymap.set('v', '<M-k>', moveline.block_up)
+      vim.keymap.set('v', '<M-j>', moveline.block_down)
+    end
+  },
+
+  -- Indent blankline
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "VeryLazy",
+    main = "ibl",
+    opts = {}
+  },
+
+  -- Autopairs
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    opts = {},
+    config = function ()
+      require('nvim-autopairs').setup({})
+    end
+  },
+
+  {
+    'windwp/nvim-ts-autotag',
+    event = "InsertEnter",
+    config = function ()
+      require('nvim-ts-autotag').setup({})
+    end,
+  },
+
+  -- Leap.vim
+  {
+    'https://github.com/ggandor/leap.nvim',
+    event = "VeryLazy",
+    dependencies = {
+      'https://github.com/tpope/vim-repeat'
     },
+    config = function()
+      require('leap').create_default_mappings()
+    end
+  },
 
-    -- Lualine.nvim
-    {
-      'nvim-lualine/lualine.nvim',
-      dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
-    },
-
-    -- TailwindCSS Colorizer
-    {
-      "roobert/tailwindcss-colorizer-cmp.nvim",
-      config = function()
-        require("tailwindcss-colorizer-cmp").setup({
-          color_square_width = 2,
-        })
-      end,
-    },
-
-    -- Lazygit.nvim
-    {
-      "kdheepak/lazygit.nvim",
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-      },
-    },
-
-    -- Harpoon
-    {
-      "ThePrimeagen/harpoon",
-      branch = "harpoon2",
-      dependencies = { "nvim-lua/plenary.nvim" }
-    },
-    -- Undotree
-    {
-      "jiaoshijie/undotree",
-      dependencies = "nvim-lua/plenary.nvim",
-      config = true,
-    },
-
-    -- Copilot
-    {
-      "github/copilot.vim",
-    },
-
-    -- Moveline
-    {
-      'willothy/moveline.nvim',
-      build = 'make',
-    },
-
-    -- Rest.nvim
-    {
-      "rest-nvim/rest.nvim",
-      dependencies = { { "nvim-lua/plenary.nvim" } },
-      config = function()
-        require("rest-nvim").setup({
-          --- Get the same options from Packer setup
-        })
-      end
-    },
-
-    -- Neodev
-    { "folke/neodev.nvim", opts = {} },
-
-    -- Which-Key
-    {
-      "folke/which-key.nvim",
-      event = "VeryLazy",
-      init = function()
-        vim.o.timeout = true
-        vim.o.timeoutlen = 300
-      end,
-      opts = {}
-    },
-
-    -- Indent blankline
-    { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-
-    -- Autopairs
-    {
-      'windwp/nvim-autopairs',
-      event = "InsertEnter",
-      opts = {} -- this is equalent to setup({}) function
-    },
-
-    {
-      'windwp/nvim-ts-autotag',
-      event = "InsertEnter",
-    },
-
-    -- Noice
-    {
-      "folke/noice.nvim",
-      event = "VeryLazy",
-      opts = {
-        -- add any options here
-      },
-      dependencies = {
-        "MunifTanjim/nui.nvim",
-        -- "rcarriga/nvim-notify",
-      }
-    }
-
+  -- Conform.nvim
+  {
+    'stevearc/conform.nvim',
+    event = "BufRead",
+    opts = {},
   }
+}
