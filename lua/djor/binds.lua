@@ -21,8 +21,8 @@ keymap('n', "<leader>cb", utils.buf_kill, opts)
 keymap('n', '<leader>ut', undotree.toggle, opts)
 
 -- Telescope
-keymap('n', '<leader>gf', telescope.git_files, {})
-keymap('n', '<leader>pf', function()
+keymap('n', '<leader>pf', telescope.git_files, {})
+keymap('n', '<leader>af', function()
     vim.cmd('Telescope find_files hidden=true no_ignore=true')
 end)
 keymap('n', '<leader>gs', function()
