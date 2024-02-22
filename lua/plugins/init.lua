@@ -88,7 +88,7 @@ return {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     opts = {},
-    config = function ()
+    config = function()
       require('nvim-autopairs').setup({})
     end
   },
@@ -96,7 +96,7 @@ return {
   {
     'windwp/nvim-ts-autotag',
     event = "InsertEnter",
-    config = function ()
+    config = function()
       require('nvim-ts-autotag').setup({})
     end,
   },
@@ -112,11 +112,9 @@ return {
       require('leap').create_default_mappings()
     end
   },
-
-  -- Conform.nvim
   {
-    'stevearc/conform.nvim',
-    event = "BufRead",
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {},
   }
 }

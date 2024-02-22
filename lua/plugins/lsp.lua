@@ -55,8 +55,8 @@ return {
     cmp.config.formatting = {
       format = require("tailwindcss-colorizer-cmp").formatter
     }
-    -- cmp_mappings['<Tab>'] = nil
-    -- cmp_mappings['<S-Tab>'] = nil
+    cmp_mappings['<Tab>'] = nil
+    cmp_mappings['<S-Tab>'] = nil
 
     lsp.setup_nvim_cmp({ mapping = cmp_mappings })
 

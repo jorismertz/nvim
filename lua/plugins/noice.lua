@@ -6,15 +6,15 @@ return {
     "MunifTanjim/nui.nvim",
   },
   config = function()
-    require("noice").setup({
-      lsp = {
-        hover = {
-          enabled = false
-        },
-        signature = {
-          enabled = false
-        }
-      }
-    })
+    -- require("noice").setup({
+    --   lsp = {
+    --     hover = {
+    --       enabled = false
+    --     },
+    --     signature = {
+    --       enabled = false
+    --     }
+    --   }
+    -- })
   end
 }

@@ -44,8 +44,8 @@ local binds = {
         signature_help = '<C-h>'
     },
     cmp = {
-        select_prev_item = '<C-n>',
-        select_next_item = '<C-m>',
+        select_prev_item = '<C-p>',
+        select_next_item = '<C-n>',
         confirm = '<C-y>',
         complete = '<C-Space>'
     },
