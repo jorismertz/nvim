@@ -16,6 +16,11 @@ return {
         markdown = { "markdownlint" },
         python = { "ruff_format" },
         rust = { "rustfmt" },
+      },
+      formatters = {
+        rustfmt = {
+          prepend_args = { "--edition", "2021" }
+        }
       }
     })
   end

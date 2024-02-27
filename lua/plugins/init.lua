@@ -92,15 +92,6 @@ return {
       require('nvim-autopairs').setup({})
     end
   },
-
-  {
-    'windwp/nvim-ts-autotag',
-    event = "InsertEnter",
-    config = function()
-      require('nvim-ts-autotag').setup({})
-    end,
-  },
-
   -- Leap.vim
   {
     'https://github.com/ggandor/leap.nvim',
@@ -116,5 +107,5 @@ return {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {},
-  }
+  },
 }

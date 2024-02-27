@@ -7,6 +7,7 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 vim.opt.wrap = false
+vim.opt.selection = "exclusive"
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
@@ -14,9 +15,9 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 
-vim.opt.updatetime = 50 
+vim.opt.updatetime = 50
 -- vim.opt.clipboard = "unnamedplus" -- Yank to clipboard
-vim.wo.fillchars='eob: ' -- remove tilde from empty lines
+vim.wo.fillchars = 'eob: ' -- remove tilde from empty lines
 
 vim.o.cmdheight = 0
 
