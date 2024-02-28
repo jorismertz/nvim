@@ -84,4 +84,24 @@ function utils.buf_kill(kill_command, bufnr, force)
   end
 end
 
+utils.tbl_len = function(tbl)
+  local count = 0
+  for _ in pairs(tbl) do count = count + 1 end
+  return count
+end
+
+utils.str_len = function(str)
+  local count = 0
+  for _ in string.gmatch(str, ".") do count = count + 1 end
+  return count
+end
+
+utils.len = function(str_or_tbl)
+  if type(str_or_tbl) == 'string' then
+    return utils.str_len(str_or_tbl)
+  else
+    return utils.tbl_len(str_or_tbl)
+  end
+end
+
 return utils

@@ -33,6 +33,10 @@ return {
     const [{}, set{}] = useState({})
   ]], { i(1), same_capitalized(1), i(2) })),
 
+  usetranslation = s({ trig = "usetrans" }, fmt([[
+    const {{ t }} = useTranslation(["{}"])
+  ]], { i(1) })),
+
   export_default_function = s({
     trig = "export default function",
     snippetType = "autosnippet"
