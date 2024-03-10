@@ -1,6 +1,6 @@
 local M = {}
 
----@param str string current line
+---@param str string - current line
 ---@return integer|nil, integer|nil
 M._find_checkbox = function(str)
   local start, finish = string.find(str, "%-%s*%[.-%]")
@@ -17,9 +17,11 @@ local patterns = {
   unchecked = "%[%s*%]",
 }
 
----@param str string current line
-M._toggle_in_string = function(str)
-  local start, finish = M._find_checkbox(str)
+---@param str string - current line
+---@param start integer|nil
+---@param finish integer|nil
+---@return string
+M._toggle_in_string = function(str, start, finish)
   if start == nil or finish == nil then
     return str
   end
@@ -35,15 +37,13 @@ M._toggle_in_string = function(str)
   return string.sub(str, 1, start - 1) .. checkbox .. string.sub(str, finish + 1)
 end
 
+-- Looks for a checkbox in the current line and toggles it
+---@return nil
 M.toggle_checkbox = function()
   local current_line = vim.api.nvim_get_current_line()
-  vim.api.nvim_set_current_line(M._toggle_in_string(current_line))
+  local start, finish = M._find_checkbox(current_line)
+  local new_line = M._toggle_in_string(current_line, start, finish)
+  vim.api.nvim_set_current_line(new_line)
 end
 
-vim.keymap.set('n', '<C-c>', function()
-  M.toggle_checkbox()
-end)
-
--- [ ] test
--- [ ] test1
--- [x] test3
+return M
