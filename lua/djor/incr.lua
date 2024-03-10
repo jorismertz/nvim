@@ -12,6 +12,11 @@ M._get_num_pos = function()
 
   for i = start, 1, -1 do
     local char = line:sub(i, i)
+    if char == "-" and i == 1 then
+      start = i
+      break
+    end
+
     local found_dash = false
 
     if char:match("%d") or char == '.' then
@@ -40,8 +45,8 @@ M._get_num_pos = function()
   return { { start, finish }, line:sub(start, finish) }
 end
 
--- @param cols: { number, number }
--- @param value: number
+---@param cols { integer, integer }
+---@param value integer
 M.replace_num_at = function(cols, value)
   local current_line = vim.api.nvim_get_current_line()
 

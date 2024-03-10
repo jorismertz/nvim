@@ -22,6 +22,7 @@ local function same_capitalized(index)
   end, { index })
 end
 
+
 return {
   useeffect = s({ trig = "useeffect", }, fmt([[
     useEffect(() => {{
@@ -29,13 +30,13 @@ return {
     }}, [{}])
   ]], { i(1), i(2) })),
 
+  usetranslation = s({ trig = "usetrans" }, fmt([[
+  const {{ t }} = useTranslation(["{}"])
+  ]], { i(1) })),
+
   usestate = s({ trig = "usestate" }, fmt([[
     const [{}, set{}] = useState({})
   ]], { i(1), same_capitalized(1), i(2) })),
-
-  usetranslation = s({ trig = "usetrans" }, fmt([[
-    const {{ t }} = useTranslation(["{}"])
-  ]], { i(1) })),
 
   export_default_function = s({
     trig = "export default function",
