@@ -58,32 +58,32 @@ local function rose_pine_template(colors)
     normal = {
       a = { bg = colors.iris, fg = colors.base, gui = "bold" },
       b = { bg = colors.surface, fg = colors.subtle },
-      c = { bg = colors.base, fg = colors.subtle },
+      c = { bg = "none", fg = colors.subtle },
     },
     insert = {
       a = { bg = colors.love, fg = colors.text, gui = "bold" },
       b = { bg = colors.surface, fg = colors.subtle },
-      c = { bg = colors.base, fg = colors.subtle },
+      c = { bg = "none", fg = colors.subtle },
     },
     visual = {
       a = { bg = colors.pine, fg = colors.text, gui = "bold" },
       b = { bg = colors.foam, fg = colors.base },
-      c = { bg = colors.base, fg = colors.subtle },
+      c = { bg = "none", fg = colors.subtle },
     },
     replace = {
       a = { bg = colors.base, fg = colors.text, gui = "bold" },
       b = { bg = colors.surface, fg = colors.muted },
-      c = { bg = colors.overlay, fg = colors.subtle },
+      c = { bg = "none", fg = colors.subtle },
     },
     command = {
       a = { bg = colors.base, fg = colors.text, gui = "bold" },
       b = { bg = colors.surface, fg = colors.muted },
-      c = { bg = colors.overlay, fg = colors.subtle },
+      c = { bg = "none", fg = colors.subtle },
     },
     inactive = {
       a = { bg = colors.highlightLow, fg = colors.muted, gui = "bold" },
       b = { bg = colors.highlightLow, fg = colors.muted },
-      c = { bg = colors.highlightLow, fg = colors.muted },
+      c = { bg = "none", fg = colors.muted },
     },
   }
 end
