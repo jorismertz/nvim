@@ -21,4 +21,7 @@ vim.wo.fillchars = 'eob: ' -- remove tilde from empty lines
 
 vim.o.cmdheight = 0
 
--- vim.notify = require("notify")
+-- Disable semantic lsp highlighting (which breaks treesitter highlights)
+for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+  vim.api.nvim_set_hl(0, group, {})
+end
