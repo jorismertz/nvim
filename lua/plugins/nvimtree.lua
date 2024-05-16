@@ -6,9 +6,9 @@ return {
     'nvim-tree/nvim-web-devicons',
   },
   config = function()
-    local nvimtree = require ( 'nvim-tree.api' )
+    local nvimtree = require('nvim-tree.api')
     require("nvim-tree").setup({
-      sort_by = "case_sensitive",
+      sort_by = "extension",
       view = {
         side = "right",
         width = 30,

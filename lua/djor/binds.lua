@@ -65,6 +65,8 @@ vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
 vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
 vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
 
+require('leap').create_default_mappings()
+
 local binds = {
   lsp = {
     definition = 'gd',
