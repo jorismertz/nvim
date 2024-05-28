@@ -19,6 +19,7 @@ keymap('n', "<C-l>", "<C-w>l", opts)
 keymap('n', "<leader>y", '"+y', opts)
 
 -- Miscelanious
+keymap('n', "<leader>pr", "<cmd>TroubleToggle<CR>", opts)
 keymap('n', "<leader>kk", "<cmd>CellularAutomaton make_it_rain<CR>", opts)
 keymap('n', '<C-c>', check.toggle_checkbox, opts)
 keymap('n', "<leader>cb", utils.buf_kill, opts)

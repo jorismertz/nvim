@@ -8,6 +8,7 @@ vim.opt.expandtab = true
 
 vim.opt.wrap = false
 vim.opt.selection = "exclusive"
+vim.opt.swapfile = false
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true

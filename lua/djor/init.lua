@@ -18,4 +18,12 @@ vim.opt.rtp:prepend(lazypath)
 require("djor.set")
 require("lazy").setup('plugins')
 require("djor.binds")
-require("djor.incr")
+-- require("djor.incr")
+require("djor.autocmd")
+
+vim.filetype.add({
+  pattern = {
+    [".*/hypr/.*%.conf"] = "hyprlang",
+  },
+})
+-- vim.filetype.add({ extensions = { askama = "htmldjango" } })

@@ -93,7 +93,21 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects", },
     config = function()
       require 'nvim-treesitter.configs'.setup {
-        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "go", "json", "http", "css", "html", "yaml" },
+        ensure_installed = {
+          "lua",
+          "vim",
+          "vimdoc",
+          "query",
+          "javascript",
+          "go",
+          "rust",
+          "json",
+          "http",
+          "css",
+          "html",
+          "yaml",
+          "sql"
+        },
         ignore_install = {},
         modules = {},
         sync_install = false,

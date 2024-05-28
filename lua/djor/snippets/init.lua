@@ -5,13 +5,22 @@ M.clean_snippet_name = function(name)
   return name:gsub("_", " ")
 end
 
+---@param snippets table
+---@param lang string|string[]
 M.add_snippets = function(snippets, lang)
   local stack = {}
   for _, snippet in pairs(snippets) do
     table.insert(stack, snippet)
   end
 
-  luasnip.add_snippets(lang, stack)
+  if type(lang) == "table" then
+    for _, l in pairs(lang) do
+      luasnip.add_snippets(l, stack)
+    end
+    return
+  else
+    luasnip.add_snippets(lang, stack)
+  end
 end
 
 M.insert_snippet = function(snippet)
@@ -41,12 +50,14 @@ M.init = function()
   local lua = require("djor.snippets.lua")
   local react = require("djor.snippets.react")
   local go = require("djor.snippets.go")
+  local html = require("djor.snippets.html")
   local common = require("djor.snippets.common")
 
   M.add_snippets(lua, 'lua')
   M.add_snippets(react, 'typescriptreact')
   M.add_snippets(go, 'go')
   M.add_snippets(common, 'all')
+  M.add_snippets(html, { 'html', 'htmldjango' })
 
   vim.keymap.set("n", "<leader>ee", function()
     M.insert_snippet(go.if_err)

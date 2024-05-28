@@ -3,14 +3,14 @@ return {
   event = "BufRead",
   branch = 'v2.x',
   dependencies = {
+    { 'onsails/lspkind.nvim' },
     { 'neovim/nvim-lspconfig' },             -- Required
     { 'williamboman/mason.nvim' },           -- Optional
     { 'williamboman/mason-lspconfig.nvim' }, -- Optional
     { 'hrsh7th/nvim-cmp' },                  -- Required
     { 'hrsh7th/cmp-nvim-lsp' },              -- Required
     { 'L3MON4D3/LuaSnip' },                  -- Required
-    { "folke/neodev.nvim",                     opts = {} },
-    { "roobert/tailwindcss-colorizer-cmp.nvim" },
+    { "folke/neodev.nvim",                opts = {} },
   },
   config = function()
     require('neodev').setup({})
@@ -48,13 +48,12 @@ return {
       [binds.cmp.complete] = cmp.mapping.complete(),
     })
 
-    require("tailwindcss-colorizer-cmp").setup({
-      color_square_width = 2,
-    })
-
     cmp.config.formatting = {
-      format = require("tailwindcss-colorizer-cmp").formatter
+      format = require("lspkind").cmp_format({
+        before = require("tailwind-tools.cmp").lspkind_format
+      })
     }
+
     cmp_mappings['<Tab>'] = nil
     cmp_mappings['<S-Tab>'] = nil
 

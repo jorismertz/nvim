@@ -11,6 +11,7 @@ local s = ls.snippet
 
 local require_var = function(args, _)
   local text = args[1][1] or ""
+  text = text:gsub("-", "_")
   local split = vim.split(text, ".", { plain = true })
 
   local options = {}
@@ -22,7 +23,6 @@ local require_var = function(args, _)
     c(1, options),
   })
 end
-
 
 return {
   req = s({ trig = "req" }, fmt([[local {} = require("{}")]], {
