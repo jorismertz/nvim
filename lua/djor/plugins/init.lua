@@ -1,45 +1,7 @@
 return {
   {
-    'goolord/alpha-nvim',
-    config = function()
-      local alpha = require 'alpha'
-      local dashboard = require('alpha.themes.dashboard')
-
-      dashboard.section.buttons.val = {
-        dashboard.button('e', 'New file'),
-        dashboard.button('<leader>pf', 'Find File'),
-        dashboard.button('<leader>gs', 'Find word'),
-        dashboard.button('<leader>op', 'Harpoon Bookmarks'),
-      }
-
-      alpha.setup(dashboard.config)
-    end
-  },
-  {
     'eandrju/cellular-automaton.nvim',
     event = "BufRead",
-  },
-
-
-  -- Rose Pine Theme
-  {
-    'rose-pine/neovim',
-    as = 'rose-pine',
-    config = function()
-      -- These 2 lines allow for a transparant background
-      require('rose-pine').setup({
-        variant = 'moon',
-        dim_inactive_windows = false,
-        styles = {
-          transparency = true
-        }
-      })
-
-      vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-      vim.cmd("hi Normal guibg=none ctermbg=none")
-      vim.cmd("colorscheme rose-pine-moon")
-    end,
   },
 
   -- Nvim-Colorizer
@@ -124,25 +86,5 @@ return {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {},
-  },
-  {
-    "toppair/peek.nvim",
-    event = { "VeryLazy" },
-    build = "deno task --quiet build:fast",
-    config = function()
-      require("peek").setup({
-        auto_load = true,
-        close_on_bdelete = true,
-        syntax = true,
-        theme = 'dark',
-        update_on_change = true,
-        app = 'firefox',
-        filetype = { 'markdown' },
-        throttle_at = 200000,
-        throttle_time = 'auto',
-      })
-      vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
-      vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
-    end,
   },
 }

@@ -9,12 +9,12 @@ return {
           swap = {
             enable = true,
             swap_next = {
-              ["<leader>na"] = "@parameter.inner", -- swap parameters/argument with next
-              ["<leader>nm"] = "@function.outer",  -- swap function with next
+              ["<leader>na"] = "@parameter.inner",
+              ["<leader>nm"] = "@function.outer",
             },
             swap_previous = {
-              ["<leader>pa"] = "@parameter.inner", -- swap parameters/argument with prev
-              ["<leader>pm"] = "@function.outer",  -- swap function with previous
+              ["<leader>pa"] = "@parameter.inner",
+              ["<leader>pm"] = "@function.outer",
             },
           },
           select = {
@@ -47,7 +47,7 @@ return {
           },
           move = {
             enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
+            set_jumps = true,
             goto_next_start = {
               ["]f"] = { query = "@call.outer", desc = "Next function call start" },
               ["]m"] = { query = "@function.outer", desc = "Next method/function def start" },
@@ -55,8 +55,8 @@ return {
               ["]i"] = { query = "@conditional.outer", desc = "Next conditional start" },
               ["]l"] = { query = "@loop.outer", desc = "Next loop start" },
 
-              -- You can pass a query group to use query from `queries/<lang>/<query_group>.scm file in your runtime path.
-              -- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
+
+
               ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
               ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
             },
@@ -121,23 +121,17 @@ return {
   },
   {
     'windwp/nvim-ts-autotag',
-    event = "VeryLazy",
+    event = "BufRead",
     config = function()
       require('nvim-ts-autotag').setup({
-        enable = true,
-        enable_rename = true,
-        enable_close = true,
-        enable_close_on_slash = true,
-        filetypes = {
-          "html",
-          "htmldjango",
-          "handlebars",
-          "jinja",
-          "javascriptreact",
-          "typescriptreact",
-          "svelte",
-          "xml",
-        }
+        opts = {
+          enable_close = true,
+          enable_rename = true,
+          enable_close_on_slash = false
+        },
+        aliases = {
+          ["handlebars"] = "html",
+        },
       })
     end,
   },

@@ -1,7 +1,6 @@
-local telescope = require('telescope.builtin')
 local utils = require('djor.utils')
 local undotree = require('undotree')
-local check = require("djor.check")
+local check = require("djor.modules.check")
 
 local keymap = vim.keymap.set
 local opts = {
@@ -24,37 +23,9 @@ keymap('n', '<C-c>', check.toggle_checkbox, opts)
 keymap('n', "<leader>cb", utils.buf_kill, opts)
 keymap('n', '<leader>ut', undotree.toggle, opts)
 
--- Telescope
-local function find_files()
-  telescope.find_files({
-    hidden = true,
-    no_ignore = true,
-  })
-end
-
-local function git_files()
-  telescope.git_files({
-    show_untracked = true,
-  })
-end
-
-local function live_grep()
-  telescope.live_grep({
-    hidden = true,
-    no_ignore = true,
-  })
-end
-
 local function yank_history()
   require('telescope').extensions.yank_history.yank_history({})
 end
-
-keymap('n', '<leader>pf', git_files)
-keymap('n', '<leader>af', find_files)
-keymap('n', '<leader>gs', live_grep)
-keymap('n', '<leader>rf', telescope.lsp_references)
-keymap('n', '<leader>gc', telescope.git_commits)
-keymap('n', '<leader>ts', telescope.treesitter)
 keymap('n', '<leader>pp', yank_history)
 
 -- Yanky

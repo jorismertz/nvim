@@ -48,8 +48,11 @@ return {
     fmt([[
       {{% match {} %}}
         {{% when Some with ({}) %}}
+          {}
+        {{% when None %}}
+          {}
       {{% endmatch
-    ]], { i(1), i(2) })
+    ]], { i(1), i(2), i(3), i(4) })
   ),
   macro = s({ trig = "{% macro", },
     fmt([[
@@ -62,8 +65,10 @@ return {
     fmt([[
       {{% if {} %}}
         {}
+      {{% else %}}
+        {}
       {{% endif
-    ]], { i(1), i(2) })
+    ]], { i(1), i(2), i(3) })
   ),
   if_let = s({ trig = "{% if let", },
     fmt([[
