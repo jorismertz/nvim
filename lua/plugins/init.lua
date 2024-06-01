@@ -20,17 +20,6 @@ return {
     event = "BufRead",
   },
 
-  -- Telescope.nvim
-  {
-    'nvim-telescope/telescope.nvim',
-    branch = "master",
-    cmd = "Telescope",
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function()
-      local telescope = require('telescope')
-      telescope.setup {}
-    end
-  },
 
   -- Rose Pine Theme
   {

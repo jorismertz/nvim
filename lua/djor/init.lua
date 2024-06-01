@@ -21,9 +21,15 @@ require("djor.binds")
 -- require("djor.incr")
 require("djor.autocmd")
 
+local askama = require("djor.askama")
+askama:setup({
+  source_file_ext = "html",
+  target_filetype = "handlebars",
+  treesitter_parser = "htmldjango",
+})
+
 vim.filetype.add({
   pattern = {
     [".*/hypr/.*%.conf"] = "hyprlang",
   },
 })
--- vim.filetype.add({ extensions = { askama = "htmldjango" } })

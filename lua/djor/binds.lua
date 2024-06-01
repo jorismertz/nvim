@@ -19,7 +19,6 @@ keymap('n', "<C-l>", "<C-w>l", opts)
 keymap('n', "<leader>y", '"+y', opts)
 
 -- Miscelanious
-keymap('n', "<leader>pr", "<cmd>TroubleToggle<CR>", opts)
 keymap('n', "<leader>kk", "<cmd>CellularAutomaton make_it_rain<CR>", opts)
 keymap('n', '<C-c>', check.toggle_checkbox, opts)
 keymap('n', "<leader>cb", utils.buf_kill, opts)
@@ -53,6 +52,7 @@ end
 keymap('n', '<leader>pf', git_files)
 keymap('n', '<leader>af', find_files)
 keymap('n', '<leader>gs', live_grep)
+keymap('n', '<leader>rf', telescope.lsp_references)
 keymap('n', '<leader>gc', telescope.git_commits)
 keymap('n', '<leader>ts', telescope.treesitter)
 keymap('n', '<leader>pp', yank_history)

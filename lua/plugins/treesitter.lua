@@ -131,6 +131,8 @@ return {
         filetypes = {
           "html",
           "htmldjango",
+          "handlebars",
+          "jinja",
           "javascriptreact",
           "typescriptreact",
           "svelte",

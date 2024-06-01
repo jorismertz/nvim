@@ -7,10 +7,3 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end
   end,
 })
-
-vim.api.nvim_create_autocmd("BufRead", {
-  pattern = "*.j2",
-  callback = function()
-    vim.bo.filetype = "htmldjango"
-  end,
-})

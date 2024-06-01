@@ -52,11 +52,13 @@ M.init = function()
   local go = require("djor.snippets.go")
   local html = require("djor.snippets.html")
   local common = require("djor.snippets.common")
+  local jinja = require("djor.snippets.jinja")
 
   M.add_snippets(lua, 'lua')
   M.add_snippets(react, 'typescriptreact')
   M.add_snippets(go, 'go')
   M.add_snippets(common, 'all')
+  M.add_snippets(jinja, { 'html', 'handlebars', 'htmldjango', 'jinja' })
   M.add_snippets(html, { 'html', 'htmldjango' })
 
   vim.keymap.set("n", "<leader>ee", function()
