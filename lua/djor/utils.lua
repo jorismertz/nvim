@@ -104,4 +104,17 @@ utils.len = function(str_or_tbl)
   end
 end
 
+--- Wrap a function with arguments to be called later
+---@param fn function
+---@param args table|nil
+---@return function
+utils.wrap_fn = function(fn, args)
+  if not args then
+    return fn
+  end
+  return function()
+    fn(args)
+  end
+end
+
 return utils

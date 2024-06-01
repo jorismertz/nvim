@@ -1,3 +1,5 @@
+local utils = require("djor.utils")
+
 return {
   {
     'nvim-telescope/telescope.nvim',
@@ -15,26 +17,14 @@ return {
       })
 
       local builtin = require('telescope.builtin')
-      -- Telescope
-      local function find_files()
-        builtin.find_files({
-          hidden = true,
-          no_ignore = true,
-        })
-      end
+      local picker_opts = {
+        hidden = true,
+        no_ignore = true,
+      }
 
-      local function git_files()
-        builtin.git_files({
-          show_untracked = true,
-        })
-      end
-
-      local function live_grep()
-        builtin.live_grep({
-          hidden = true,
-          no_ignore = true,
-        })
-      end
+      local find_files = utils.wrap_fn(builtin.find_files, picker_opts)
+      local live_grep = utils.wrap_fn(builtin.live_grep, picker_opts)
+      local git_files = utils.wrap_fn(builtin.git_files, { show_untracked = true })
 
       local keymap = vim.keymap.set
       local opts = {
@@ -45,9 +35,9 @@ return {
       keymap('n', '<leader>pf', git_files, opts)
       keymap('n', '<leader>af', find_files, opts)
       keymap('n', '<leader>gs', live_grep, opts)
-      keymap('n', '<leader>rf', telescope.lsp_references, opts)
-      keymap('n', '<leader>gc', telescope.git_commits, opts)
-      keymap('n', '<leader>ts', telescope.treesitter, opts)
+      keymap('n', '<leader>rf', builtin.lsp_references, opts)
+      keymap('n', '<leader>gc', builtin.git_commits, opts)
+      keymap('n', '<leader>ts', builtin.treesitter, opts)
     end
   },
 }
