@@ -13,15 +13,13 @@ return {
     { "folke/neodev.nvim",                opts = {} },
   },
   config = function()
-    require('neodev').setup({})
+    require('neodev').setup {}
 
     local lsp = require('lsp-zero')
+    lsp.preset('recommended')
+
     local binds = require('djor.binds')
 
-    lsp.preset('recommended')
-    lsp.ensure_installed({
-      'tsserver',
-    })
 
 
     local lspconfig = require('lspconfig')
@@ -36,7 +34,7 @@ return {
     })
 
     lspconfig.htmx.setup {
-      filetypes = { 'html', 'htmldjango' }
+      filetypes = { 'html', 'htmldjango', 'handlebars', 'jinja' }
     }
 
     local cmp = require('cmp')
@@ -65,7 +63,6 @@ return {
       vim.keymap.set('n', binds.lsp.definition, vim.lsp.buf.definition, opts)
       vim.keymap.set('n', binds.lsp.hover, vim.lsp.buf.hover, opts)
       vim.keymap.set('n', binds.lsp.workspace_symbol, require 'telescope.builtin'.lsp_workspace_symbols, opts)
-      vim.keymap.set('n', binds.lsp.references, require 'telescope.builtin'.lsp_references, opts)
       vim.keymap.set('n', binds.lsp.open_float, vim.diagnostic.open_float, opts)
       vim.keymap.set('n', binds.lsp.goto_next, vim.diagnostic.goto_next, opts)
       vim.keymap.set('n', binds.lsp.goto_prev, vim.diagnostic.goto_prev, opts)

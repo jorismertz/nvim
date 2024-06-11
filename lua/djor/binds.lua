@@ -48,7 +48,6 @@ local binds = {
     goto_next = '[d',
     goto_prev = ']d',
     code_action = '<leader>vca',
-    references = '<leader>vrr',
     rename = '<leader>vrn',
     signature_help = '<C-h>'
   },
