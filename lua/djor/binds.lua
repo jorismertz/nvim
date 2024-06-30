@@ -1,6 +1,5 @@
 local utils = require('djor.utils')
 local undotree = require('undotree')
-local check = require("djor.modules.check")
 
 local keymap = vim.keymap.set
 local opts = {
@@ -19,7 +18,6 @@ keymap('n', "<leader>y", '"+y', opts)
 
 -- Miscelanious
 keymap('n', "<leader>kk", "<cmd>CellularAutomaton make_it_rain<CR>", opts)
-keymap('n', '<C-c>', check.toggle_checkbox, opts)
 keymap('n', "<leader>cb", utils.buf_kill, opts)
 keymap('n', '<leader>ut', undotree.toggle, opts)
 

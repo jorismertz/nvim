@@ -39,6 +39,7 @@ return {
       keymap('n', '<leader>rf', builtin.lsp_references, opts)
       keymap('n', '<leader>gc', builtin.git_commits, opts)
       keymap('n', '<leader>ts', builtin.treesitter, opts)
+      keymap('n', '<leader>ht', builtin.help_tags, opts)
     end
   },
 }

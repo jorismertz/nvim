@@ -1,31 +1,13 @@
 ; extends
 
-; Injects SQL highlighting into `sqlx::query!` macro invocations
-(macro_invocation
-  (scoped_identifier
+; Injects SQL highlighting into `sqlx:query` macro invocations
+(field_expression(_
+  (scoped_identifier 
     path: (identifier) @path (#eq? @path "sqlx")
-    name: (identifier) @name (#eq? @name "query"))
-
-  (token_tree
-    (raw_string_literal
-      (string_content) @injection.content
-      (#set! injection.language "sql"))
-    )
+    name: (identifier) @name (#match? @name "query.*")
   )
-
-
-; Injects SQL highlighting into `sqlx::query` invocations
-(field_expression
-  (call_expression
-    (scoped_identifier
-      path: (identifier) @path (#eq? @path "sqlx")
-      name: (identifier) @name (#eq? @name "query")) 
-    (arguments
-      (raw_string_literal
-        (string_content) @injection.content
-        (#set! injection.language "sql")
-      )
-    )
-  ) 
-) 
-
+  (_(_
+    (string_content) @injection.content)
+    (#set! injection.language "sql")
+  ))
+)
