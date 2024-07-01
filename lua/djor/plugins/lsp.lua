@@ -40,9 +40,8 @@ return {
 				},
 			})
 
-			lspconfig.htmx.setup({
-				filetypes = { "html", "htmldjango", "handlebars", "jinja" },
-			})
+			lspconfig.htmx.setup({ filetypes = { "html", "htmlaskama" } })
+			lspconfig.tailwindcss.setup({ filetypes = { "html", "htmlaskama" } })
 
 			local cmp = require("cmp")
 			local cmp_select = { behavior = cmp.SelectBehavior.Select }

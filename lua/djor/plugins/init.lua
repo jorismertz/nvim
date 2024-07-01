@@ -9,9 +9,7 @@ return {
 		"NvChad/nvim-colorizer.lua",
 		event = "BufRead",
 		config = function()
-			require("colorizer").setup({
-
-      })
+			require("colorizer").setup({})
 		end,
 	},
 
@@ -86,16 +84,6 @@ return {
 	{
 		"pmizio/typescript-tools.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		opts = { },
-	},
-	{
-		name = "askama.nvim",
-		dir = "~/projects/2024/askama.nvim",
-    opts = {
-      parser_path = "/home/joris/projects/2024/askama_treesitter/",
-      install_snippets = true,
-      snippet_autopairs = true,
-    },
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		opts = {},
 	},
 }
