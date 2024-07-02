@@ -7,7 +7,6 @@ return {
 			decrement = "<C-x>",
 		},
 		additions = {
-			{ "[ ]", "[~]", "[x]" },
 			{ "foo", "bar", "baz" },
 			{ "tic", "tac", "toe" },
 			{ "hex", "rgb", "hsl" },

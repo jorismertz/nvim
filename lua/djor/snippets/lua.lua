@@ -33,12 +33,4 @@ return {
     i(1, "args"),
     i(0),
   })),
-  -- req = fmt([[local {} = require("{}")]], {
-  --   d(2, require_var, { 1 }),
-  --   i(1),
-  -- }),
-  -- func = fmt([[function({})\n\t{}\nend]], {
-  --   i(1, "args"),
-  --   i(0),
-  -- }),
 }
